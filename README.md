@@ -11,7 +11,9 @@ You may use the command line gradle to build or run unit tests.
 
 ## API
 
-The server uses https://amock.io/ to mock such APIs
+The app uses https://amock.io/ to mock such APIs. 
+There's a user associated API saved in code for testing. However, you will not be able to change the state of the API (E.g. mocking API Error, HTTP Error).
+To do that, you will have to create your own amock.io account. Please proceed to "Using your own amock.io to mock your own API" Section
 
 The general API Response format looks like this
 
@@ -25,8 +27,41 @@ For success sample
 }
 ```
 
-The `data` object can be in any form as long as you pass its type argument into `ApiResponse<T>`
+The `data` object can be in any form as long as you pass its type argument into `ApiResponse<T>`. 
+For example, we have this class called `WalletLoadResponse` and its definition.
 
+```kotlin
+class WalletLoadResponse(val wallets: List<Wallet> = listOf())
+
+class Wallet(val id: String, @SerializedName("wallet_name") val walletName: String,
+             val balance: String)
+```
+
+Passing this to `ApiResponse<WalletLoadResponse>`, this must be the structure of JSON Version.
+```JSON
+{
+    "data": {
+        "wallets": [
+            {
+                "id": "1001",
+                "wallet_name": "PHP",
+                "balance": "1000.23"
+            },
+            {
+                "id": "1002",
+                "wallet_name": "USD",
+                "balance": "100.10"
+            },
+            {
+                "id": "1003",
+                "wallet_name": "ETH",
+                "balance": "0.000000000000010026"
+            }
+        ]
+    }
+}
+
+```
 
 For error from API
 ```JSON
@@ -41,7 +76,7 @@ For error from API
 }
 ```
 `errors` is in a form of Dictionary/HashTable/HashMap data structure. It will require the name of error as key to get the value version.
-`httpErrorCode` is optional
+`httpErrorCode` is also needed.
  
 
 ### Wallet API
@@ -117,3 +152,14 @@ Sample
     
 }
 ```
+
+## Using your own amock.io to mock your own API
+
+Since you do not have an access to the built-in amock.io/glenn.dev account you can still associate your own account to replace the existing account.
+
+1. Register your account in http://amock.io
+2. Remember your username. Because you will have to place the constant `USER_NAME` in `HttpModule` class in this project.
+3. Go to the dashboard to create those APIs (Wallets and Transaction History). You may refer those above to mock success response, API Error response, and HTTP Error.
+4. Open `HttpModule.kt`. Find the field `USER_NAME` and replace the existing value.
+5. You will have to recompile the app to apply changes.
+
