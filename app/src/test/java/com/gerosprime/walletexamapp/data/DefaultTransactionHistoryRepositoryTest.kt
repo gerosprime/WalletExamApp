@@ -12,7 +12,7 @@ import retrofit2.HttpException
 
 class DefaultTransactionHistoryRepositoryTest {
 
-    private lateinit var subject: TransactionHistoryRepository
+    private lateinit var subject: DefaultTransactionHistoryRepository
 
     private lateinit var fakeWebService: FakeTransactionHistoryService
 
@@ -20,6 +20,7 @@ class DefaultTransactionHistoryRepositoryTest {
     fun setUp() {
         fakeWebService = FakeTransactionHistoryService()
         subject = DefaultTransactionHistoryRepository(fakeWebService)
+        subject.enableDelay = false
     }
 
     @Test

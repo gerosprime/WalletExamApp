@@ -10,13 +10,14 @@ import retrofit2.HttpException
 
 class DefaultWalletRepositoryTest {
 
-    private lateinit var subject: WalletRepository
+    private lateinit var subject: DefaultWalletRepository
     private lateinit var fakeWebService: FakeWalletsWebService
 
     @Before
     fun setUp() {
         fakeWebService = FakeWalletsWebService()
         subject = DefaultWalletRepository(fakeWebService)
+        subject.enableDelay = false
     }
 
     @Test

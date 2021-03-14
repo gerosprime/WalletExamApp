@@ -1,6 +1,7 @@
 package com.gerosprime.walletexamapp.data
 
 import android.os.SystemClock
+import androidx.annotation.VisibleForTesting
 import com.gerosprime.walletexamapp.data.http.TransactionHistoryWebService
 import com.gerosprime.walletexamapp.data.http.response.ApiResponse
 import com.gerosprime.walletexamapp.data.http.response.ApiStatus
@@ -13,8 +14,16 @@ import retrofit2.Response
 
 class DefaultTransactionHistoryRepository
     (private val webService: TransactionHistoryWebService) : TransactionHistoryRepository {
+
+    @VisibleForTesting
+    var enableDelay = true
+
     override fun loadHistory(): Single<TransactionHistoryResponse> = Single.fromCallable {
-        SystemClock.sleep(7000)
+
+        if (enableDelay) {
+            SystemClock.sleep(7000)
+        }
+
         val call = webService.loadHistory().execute()
         if (call.isSuccessful) {
             val response = call.body() as ApiResponse<TransactionHistoryResponse>
