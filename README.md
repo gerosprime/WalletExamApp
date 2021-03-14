@@ -27,8 +27,41 @@ For success sample
 }
 ```
 
-The `data` object can be in any form as long as you pass its type argument into `ApiResponse<T>`
+The `data` object can be in any form as long as you pass its type argument into `ApiResponse<T>`. 
+For example, we have this class called `WalletLoadResponse` and its definition.
 
+```kotlin
+class WalletLoadResponse(val wallets: List<Wallet> = listOf())
+
+class Wallet(val id: String, @SerializedName("wallet_name") val walletName: String,
+             val balance: String)
+```
+
+Passing this to `ApiResponse<WalletLoadResponse>`, this must be the structure of JSON Version.
+```JSON
+{
+    "data": {
+        "wallets": [
+            {
+                "id": "1001",
+                "wallet_name": "PHP",
+                "balance": "1000.23"
+            },
+            {
+                "id": "1002",
+                "wallet_name": "USD",
+                "balance": "100.10"
+            },
+            {
+                "id": "1003",
+                "wallet_name": "ETH",
+                "balance": "0.000000000000010026"
+            }
+        ]
+    }
+}
+
+```
 
 For error from API
 ```JSON
