@@ -11,7 +11,9 @@ You may use the command line gradle to build or run unit tests.
 
 ## API
 
-The server uses https://amock.io/ to mock such APIs
+The server uses https://amock.io/ to mock such APIs. 
+There's a user associated API saved in code for testing. However, you will not be able to change the state of the API (E.g. mocking API Error, HTTP Error).
+To do that, you will have to create your own amock.io account. Please proceed to  
 
 The general API Response format looks like this
 
@@ -41,7 +43,7 @@ For error from API
 }
 ```
 `errors` is in a form of Dictionary/HashTable/HashMap data structure. It will require the name of error as key to get the value version.
-`httpErrorCode` is optional
+`httpErrorCode` is also needed.
  
 
 ### Wallet API
@@ -117,3 +119,14 @@ Sample
     
 }
 ```
+
+## Using your own amock.io to mock your own API
+
+Since you do not have an access to the built-in amock.io/glenn.dev account you can still associate your own account to replace the existing account.
+
+1. Register your account in http://amock.io
+2. Remember your username. Because you will have to place the constant `USER_NAME` in `HttpModule` class in this project.
+3. Go to the dashboard to create those APIs (Wallets and Transaction History). You may refer those above to mock success response, API Error response, and HTTP Error.
+4. Open `HttpModule.kt`. Find the field `USER_NAME` and replace the existing value.
+5. You will have to recompile the app to apply changes.
+
