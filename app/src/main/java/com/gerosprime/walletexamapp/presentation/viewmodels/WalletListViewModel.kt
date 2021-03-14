@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.gerosprime.walletexamapp.domain.Result
 import com.gerosprime.walletexamapp.domain.Wallet
 import com.gerosprime.walletexamapp.usecase.LoadWalletsUseCase
+import javax.inject.Inject
 
-class WalletListViewModel(private val loadWalletsUseCase: LoadWalletsUseCase): ViewModel() {
+class WalletListViewModel
+    @Inject constructor(private val loadWalletsUseCase: LoadWalletsUseCase): ViewModel() {
 
     private var _walletListMLD = MutableLiveData<Result<List<Wallet>>>()
     val walletListLiveData: LiveData<Result<List<Wallet>>>

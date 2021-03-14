@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WalletExamApp</string>
+    <string name="history">History</string>
+    <string name="wallets">Wallets</string>
+
+    <string name="incoming_format">You\'ve received payment</string>
+    <string name="outcoming_format">You\'ve cashed out payment to %s</string>
+    <string name="transaction_balance_format">%s %s</string>
+    <string name="retry">Retry</string>
 </resources>

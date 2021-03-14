@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.gerosprime.walletexamapp.domain.Result
 import com.gerosprime.walletexamapp.domain.Transaction
 import com.gerosprime.walletexamapp.usecase.LoadTransactionHistoryUseCase
+import javax.inject.Inject
 
-class TransactionHistoryViewModel(private val usecase: LoadTransactionHistoryUseCase)
+class TransactionHistoryViewModel
+    @Inject constructor(private val usecase: LoadTransactionHistoryUseCase)
     : ViewModel() {
 
     private var _transactionHistoryMLD = MutableLiveData<Result<List<Transaction>>>()
