@@ -1,4 +1,4 @@
-package com.gerosprime.walletexamapp.presentation
+package com.gerosprime.walletexamapp.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,11 +1,10 @@
-package com.gerosprime.walletexamapp.presentation
+package com.gerosprime.walletexamapp.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gerosprime.walletexamapp.domain.Result
 import com.gerosprime.walletexamapp.domain.Transaction
-import com.gerosprime.walletexamapp.domain.Wallet
 import com.gerosprime.walletexamapp.usecase.LoadTransactionHistoryUseCase
 
 class TransactionHistoryViewModel(private val usecase: LoadTransactionHistoryUseCase)

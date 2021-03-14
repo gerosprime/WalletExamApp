@@ -3,6 +3,7 @@ package com.gerosprime.walletexamapp.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gerosprime.walletexamapp.LoadingState
 import com.gerosprime.walletexamapp.domain.Wallet
+import com.gerosprime.walletexamapp.presentation.viewmodels.WalletListViewModel
 import com.gerosprime.walletexamapp.usecase.FakeLoadWalletsUseCase
 import org.junit.Before
 import org.junit.Test

@@ -3,6 +3,7 @@ package com.gerosprime.walletexamapp.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gerosprime.walletexamapp.LoadingState
 import com.gerosprime.walletexamapp.domain.Transaction
+import com.gerosprime.walletexamapp.presentation.viewmodels.TransactionHistoryViewModel
 import com.gerosprime.walletexamapp.usecase.FakeLoadTransactionHistoryUseCase
 import org.junit.Assert.*
 import org.junit.Before
