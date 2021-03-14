@@ -1,4 +1,6 @@
 package com.gerosprime.walletexamapp.data.http.response
 
-class WalletLoadResponse(val wallets: List<WalletLoadResponse> = listOf(),
+import com.gerosprime.walletexamapp.domain.Wallet
+
+class WalletLoadResponse(val wallets: List<Wallet> = listOf(),
                          val error: ResponseErrors? = null)
