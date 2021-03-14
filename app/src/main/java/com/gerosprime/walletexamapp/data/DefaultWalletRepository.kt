@@ -24,7 +24,7 @@ class DefaultWalletRepository(private val walletsWebService: WalletsWebService)
         val call = walletsWebService.getWallets().execute()
         if (call.isSuccessful) {
             val response = call.body() as ApiResponse<WalletLoadResponse>
-            when (response.status) {
+            when (response.responseStatus) {
                 ApiStatus.SUCCESS -> return@fromCallable response.data
                 ApiStatus.ERROR -> throw response.mainApiError
             }

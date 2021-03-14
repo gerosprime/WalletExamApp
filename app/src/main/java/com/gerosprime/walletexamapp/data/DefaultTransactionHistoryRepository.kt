@@ -27,7 +27,7 @@ class DefaultTransactionHistoryRepository
         val call = webService.loadHistory().execute()
         if (call.isSuccessful) {
             val response = call.body() as ApiResponse<TransactionHistoryResponse>
-            when (response.status) {
+            when (response.responseStatus) {
                 ApiStatus.SUCCESS -> return@fromCallable response.data
                 ApiStatus.ERROR -> throw response.mainApiError
             }

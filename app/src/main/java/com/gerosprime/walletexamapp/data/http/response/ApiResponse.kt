@@ -9,15 +9,15 @@ class ApiResponse<T>(val data: T? = null) {
 
     constructor(httpErrorCode: Int, error : Throwable) : this() {
         this.httpErrorCode = httpErrorCode
-        this.error[KEY_SERVER_ERROR] = ApiError(error.localizedMessage)
-        this._status = ApiStatus.ERROR
+        this.errors[KEY_SERVER_ERROR] = ApiError(error.localizedMessage)
+        this.status = ApiStatus.ERROR
     }
 
-    private var _status: ApiStatus = ApiStatus.SUCCESS
-    val status: ApiStatus get() = _status
-    private var error: MutableMap<String, ApiError> = mutableMapOf()
+    private var status: ApiStatus = ApiStatus.SUCCESS
+    val responseStatus: ApiStatus get() = status
+    private var errors: MutableMap<String, ApiError> = mutableMapOf()
 
-    val mainApiError: ApiError get() = error[KEY_SERVER_ERROR]!!
+    val mainApiError: ApiError get() = errors[KEY_SERVER_ERROR]!!
 
     private var httpErrorCode = 200
     val httpCode: Int get() = httpErrorCode
