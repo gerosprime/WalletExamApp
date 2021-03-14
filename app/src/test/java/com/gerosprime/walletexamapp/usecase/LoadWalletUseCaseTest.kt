@@ -44,4 +44,18 @@ class LoadWalletUseCaseTest {
         assertTrue(errorCalled)
     }
 
+    @Test
+    fun execute_apiError_notifiesObserverAndReceivesError() {
+        repository.apply {
+            apiError = true
+        }
+        var errorCalled = false
+        subject.error = {
+            errorCalled = true
+        }
+        subject.execute()
+        assertTrue(repository.loadCalled)
+        assertTrue(errorCalled)
+    }
+
 }

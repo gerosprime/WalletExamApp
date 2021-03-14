@@ -9,6 +9,7 @@ import retrofit2.Response
 
 class FakeCall<T> : Call<T> {
 
+    var apiError = false
     var mockError = false
     var mockResult: T? = null
 

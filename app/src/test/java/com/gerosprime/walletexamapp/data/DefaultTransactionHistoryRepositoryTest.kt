@@ -1,6 +1,7 @@
 package com.gerosprime.walletexamapp.data
 
 import com.gerosprime.walletexamapp.data.http.FakeTransactionHistoryService
+import com.gerosprime.walletexamapp.data.http.response.ApiError
 import com.gerosprime.walletexamapp.data.http.response.TransactionHistoryResponse
 import io.reactivex.rxjava3.observers.TestObserver
 import org.junit.Before
@@ -45,6 +46,19 @@ class DefaultTransactionHistoryRepositoryTest {
         with(testObserver) {
             assertNoValues()
             assertError(HttpException::class.java)
+        }
+    }
+
+    @Test
+    fun loadHistory_apiError_callsWebServiceAndReturnsError() {
+        fakeWebService.apply {
+            mockApiError = true
+        }
+        val testObserver = TestObserver<TransactionHistoryResponse>()
+        subject.loadHistory().subscribe(testObserver)
+        with(testObserver) {
+            assertNoValues()
+            assertError(ApiError::class.java)
         }
     }
 }
