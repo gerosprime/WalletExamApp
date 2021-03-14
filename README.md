@@ -13,7 +13,7 @@ You may use the command line gradle to build or run unit tests.
 
 The app uses https://amock.io/ to mock such APIs. 
 There's a user associated API saved in code for testing. However, you will not be able to change the state of the API (E.g. mocking API Error, HTTP Error).
-To do that, you will have to create your own amock.io account. Please proceed to  
+To do that, you will have to create your own amock.io account. Please proceed to "Using your own amock.io to mock your own API" Section
 
 The general API Response format looks like this
 
