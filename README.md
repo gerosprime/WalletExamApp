@@ -7,7 +7,7 @@ These are the recommended versions required to make sure the project can be buil
 - Android Build Tools Version: 30.0.2
 - Kotlin Version: 1.4.30
 
-You may use the command line gradle to build or run unit tests.
+You may use the command line gradle to build or run unit tests. Make sure the Android SDK directory is correct. Check local.properties to modify it.
 
 ## API
 
