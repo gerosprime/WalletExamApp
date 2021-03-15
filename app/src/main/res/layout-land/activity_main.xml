@@ -41,12 +41,14 @@
 
                 <TextView
                     android:id="@+id/activity_main_label_wallets"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_normal"
                     android:layout_marginTop="@dimen/spacing_normal"
+                    android:layout_marginEnd="16dp"
                     android:text="@string/wallets"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_main_wallet_refresh"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,6 +79,18 @@
                     app:layout_constraintBottom_toBottomOf="@+id/activity_main_wallet_content"
                     app:layout_constraintTop_toBottomOf="@+id/activity_main_label_wallets" />
 
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:id="@+id/activity_main_wallet_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_normal"
+                    app:icon="@drawable/ic_baseline_refresh_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/activity_main_label_wallets"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/activity_main_label_wallets"
+                    app:srcCompat="@drawable/abc_vector_test" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -102,12 +116,14 @@
 
                 <TextView
                     android:id="@+id/activity_main_label_history"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_normal"
                     android:layout_marginTop="@dimen/spacing_normal"
+                    android:layout_marginEnd="16dp"
                     android:text="@string/history"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_main_transaction_refresh"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -140,6 +156,18 @@
                     app:layout_constraintEnd_toEndOf="@+id/activity_main_transaction_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_main_label_history" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:id="@+id/activity_main_transaction_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_normal"
+                    app:icon="@drawable/ic_baseline_refresh_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/activity_main_label_history"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/activity_main_label_history"
+                    app:srcCompat="@drawable/abc_vector_test" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

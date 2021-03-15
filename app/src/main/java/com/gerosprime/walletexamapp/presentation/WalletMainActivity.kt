@@ -54,6 +54,13 @@ class WalletMainActivity : AppCompatActivity() {
 
         with(mainBinding) {
 
+            activityMainTransactionRefresh.setOnClickListener {
+                transactionHistoryViewModel.loadHistory()
+            }
+            activityMainWalletRefresh.setOnClickListener {
+                walletListViewModel.loadWallets()
+            }
+
             walletBinding = activityMainWalletContent
             with(walletBinding) {
                 root.addItemDecoration(DividerItemDecoration(this@WalletMainActivity,
@@ -114,6 +121,11 @@ class WalletMainActivity : AppCompatActivity() {
     }
 
     private fun walletListLoadError(error: Throwable) {
+
+        mainBinding.apply {
+            activityMainWalletRefresh.visibility = View.INVISIBLE
+        }
+
         walletBinding.apply {
             root.visibility = View.INVISIBLE
         }
@@ -127,6 +139,10 @@ class WalletMainActivity : AppCompatActivity() {
     }
 
     private fun walletListLoadSuccess(wallets: List<Wallet>) {
+
+        mainBinding.apply {
+            activityMainWalletRefresh.visibility = View.VISIBLE
+        }
 
         with(walletAdapter) {
             items = wallets
@@ -145,6 +161,11 @@ class WalletMainActivity : AppCompatActivity() {
     }
 
     private fun walletListLoading() {
+
+        mainBinding.apply {
+            activityMainWalletRefresh.visibility = View.INVISIBLE
+        }
+
         walletBinding.apply {
             root.visibility = View.INVISIBLE
         }
@@ -157,6 +178,11 @@ class WalletMainActivity : AppCompatActivity() {
     }
 
     private fun transactionsHistoryLoadError(error: Throwable) {
+
+        mainBinding.apply {
+            activityMainTransactionRefresh.visibility = View.INVISIBLE
+        }
+
         transactionBinding.apply {
             root.visibility = View.INVISIBLE
         }
@@ -170,6 +196,10 @@ class WalletMainActivity : AppCompatActivity() {
     }
 
     private fun transactionsHistoryLoadSuccess(transactions: List<Transaction>) {
+
+        mainBinding.apply {
+            activityMainTransactionRefresh.visibility = View.VISIBLE
+        }
 
         with(transactionHistoryAdapter) {
             items = transactions
@@ -188,6 +218,11 @@ class WalletMainActivity : AppCompatActivity() {
     }
 
     private fun transactionsHistoryLoading() {
+
+        mainBinding.apply {
+            activityMainTransactionRefresh.visibility = View.INVISIBLE
+        }
+
         transactionBinding.apply {
             root.visibility = View.INVISIBLE
         }
